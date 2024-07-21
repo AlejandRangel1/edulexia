@@ -5,24 +5,20 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     public GameObject popUp;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject popFather;
 
     public void ShowPopUp()
     {
-        popUp.SetActive(true);
+        GameObject popUpSettings = Instantiate(popUp);
+        RectTransform popUpRect = popUpSettings.GetComponent<RectTransform>();
+        popUpRect.sizeDelta = popFather.GetComponent<RectTransform>().sizeDelta;
+        popUpSettings.transform.SetParent(popFather.gameObject.transform, false);
     }
     public void ClosePopUp()
     {
-        popUp.SetActive(false);
+        if (popUp != null)
+        {
+           Destroy(popUp);
+        }
     }
 }
