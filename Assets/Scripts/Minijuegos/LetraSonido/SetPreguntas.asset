@@ -16,11 +16,16 @@ MonoBehaviour:
   - preguntaText: Sonido "Muuu"
     respuestas:
     - Vaca
-    - Mula
+    - Rata
     - Borrego
     - Perro
     imagen: {fileID: 21300000, guid: 94933830ca7ee44419e002084b87b073, type: 3}
     audio: {fileID: 8300000, guid: 233789d2351466147b571b5732a62838, type: 3}
+    respuestasAudios:
+    - {fileID: 8300000, guid: 31877fdbc37e4b84884a34a83ac2b64b, type: 3}
+    - {fileID: 8300000, guid: ceba7d0e72837a649a3a56210db09e9d, type: 3}
+    - {fileID: 8300000, guid: 86764b42c4dd1c24c8a0bb25544758b7, type: 3}
+    - {fileID: 8300000, guid: 5c874f19fcad83642ab6ecc3fbecdd5c, type: 3}
     indiceRespuestaCorrecta: 0
   - preguntaText: Sonido "beee"
     respuestas:
@@ -29,7 +34,8 @@ MonoBehaviour:
     - Borrego
     - Perro
     imagen: {fileID: 0}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 233789d2351466147b571b5732a62838, type: 3}
+    respuestasAudios: []
     indiceRespuestaCorrecta: 2
   - preguntaText: Sonido "miau"
     respuestas:
@@ -38,5 +44,6 @@ MonoBehaviour:
     - Zorro
     - Vaca
     imagen: {fileID: 21300000, guid: fb68dacde79dad74abc846468419267b, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 233789d2351466147b571b5732a62838, type: 3}
+    respuestasAudios: []
     indiceRespuestaCorrecta: 1
