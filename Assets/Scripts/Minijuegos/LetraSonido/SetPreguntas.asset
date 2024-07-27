@@ -12,4 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad9aba6249e76d4da3206d7851b7037, type: 3}
   m_Name: SetPreguntas
   m_EditorClassIdentifier: 
-  preguntas: []
+  preguntas:
+  - preguntaText: Sonido "Muuu"
+    respuestas:
+    - Vaca
+    - Mula
+    - Borrego
+    - Perro
+    imagen: {fileID: 21300000, guid: 94933830ca7ee44419e002084b87b073, type: 3}
+    audio: {fileID: 8300000, guid: 233789d2351466147b571b5732a62838, type: 3}
+    indiceRespuestaCorrecta: 0
+  - preguntaText: Sonido "beee"
+    respuestas:
+    - Vaca
+    - Mula
+    - Borrego
+    - Perro
+    imagen: {fileID: 0}
+    audio: {fileID: 0}
+    indiceRespuestaCorrecta: 2
+  - preguntaText: Sonido "miau"
+    respuestas:
+    - Perro
+    - Gato
+    - Zorro
+    - Vaca
+    imagen: {fileID: 21300000, guid: fb68dacde79dad74abc846468419267b, type: 3}
+    audio: {fileID: 0}
+    indiceRespuestaCorrecta: 1

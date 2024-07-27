@@ -8,6 +8,8 @@ public class PreguntasData : ScriptableObject
     {
         public string preguntaText;
         public string[] respuestas;
+        public Sprite imagen;
+        public AudioClip audio;
         public int indiceRespuestaCorrecta;
     }
 
