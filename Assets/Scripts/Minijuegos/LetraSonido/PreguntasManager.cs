@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PreguntasManager : MonoBehaviour
 {
+    // Scripts
+    public VidasManager vidasManager;
+    public ProgresoManager progresoManager;
+
     public Text preguntaText;
     public Image preguntaImagen;
-    public Text vidasText;
     public Text erroresContador;
-    public Text rondasContador;
     public Text tiempoText;
 
     // Botones para las respuestas
@@ -76,7 +78,6 @@ public class PreguntasManager : MonoBehaviour
     {
         // Seteamos los textos de la interfaz (pregunta y rondas)
         preguntaText.text = preguntasData.preguntas[preguntaIndex].preguntaText;
-        rondasContador.text = "" + rondas;
 
         // Seteamos la imagen de la pregunta
         preguntaImagen.sprite = preguntasData.preguntas[preguntaIndex].imagen;
@@ -141,7 +142,9 @@ public class PreguntasManager : MonoBehaviour
         {
             // Disminuimos las vidas
             vidas--;
-            vidasText.text = "" + vidas;
+
+            // Actualizar el gráfico de vidas
+            vidasManager.ActualizarVidas(vidas);
 
             // Mostramos el panel de respuesta incorrecta
             Incorrecto.gameObject.SetActive(true);
@@ -183,6 +186,7 @@ public class PreguntasManager : MonoBehaviour
         if (preguntaActual < preguntasData.preguntas.Length)
         {
             rondas++;
+            progresoManager.ActualizarProgreso(rondas);
             Reset();
         }
         // Si no, se muestra la pantalla de Estadísticas
