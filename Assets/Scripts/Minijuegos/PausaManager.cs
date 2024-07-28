@@ -10,10 +10,14 @@ public class PausaManager : MonoBehaviour
     public Button btnReiniciar;
     public Button btnSalir;
     public Button btnCerrar;
+    public Text nombreMinijuegoText;
+    public string nombreMinijuego;
 
     void Start()
     {
         menuPausaUI.SetActive(false);
+
+        nombreMinijuegoText.text = nombreMinijuego;
 
         btnPausar.onClick.AddListener(Pausar);
         btnReanudar.onClick.AddListener(Reanudar);
