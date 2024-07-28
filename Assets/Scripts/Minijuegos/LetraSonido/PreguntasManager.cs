@@ -9,9 +9,9 @@ public class PreguntasManager : MonoBehaviour
     public VidasManager vidasManager;
     public ProgresoManager progresoManager;
 
-    public Text preguntaText;
     public Image preguntaImagen;
-    public Text erroresContador;
+    public Text erroresText;
+    public Text aciertosText;
     public Text tiempoText;
 
     // Botones para las respuestas
@@ -45,6 +45,8 @@ public class PreguntasManager : MonoBehaviour
 
     private void Start()
     {
+        vidas = 3;
+
         // Asigna los componentes AudioSource
         audioPregunta = gameObject.AddComponent<AudioSource>();
         audioRespuesta = gameObject.AddComponent<AudioSource>();
@@ -76,9 +78,6 @@ public class PreguntasManager : MonoBehaviour
 
     void SetPregunta(int preguntaIndex)
     {
-        // Seteamos los textos de la interfaz (pregunta y rondas)
-        preguntaText.text = preguntasData.preguntas[preguntaIndex].preguntaText;
-
         // Seteamos la imagen de la pregunta
         preguntaImagen.sprite = preguntasData.preguntas[preguntaIndex].imagen;
 
@@ -194,11 +193,12 @@ public class PreguntasManager : MonoBehaviour
         {
             Estadisticas.SetActive(true);
 
-            erroresContador.text = Mathf.Abs(vidas - 3) + "";
+            erroresText.text = Mathf.Abs(vidas - 3) + "";
+            aciertosText.text = vidas + "/3";
 
             // Mostrar el tiempo tomado
             nivelActivo = false; // Detener el contador de tiempo
-            tiempoText.text = (int)tiempoNivel + "";
+            tiempoText.text = (int)tiempoNivel + " s";
         }
     }
 
