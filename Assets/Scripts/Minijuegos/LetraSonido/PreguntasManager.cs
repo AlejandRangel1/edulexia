@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PreguntasManager : MonoBehaviour
 {
-    public Text preguntaText;
+    // Scripts
+    public VidasManager vidasManager;
+    public ProgresoManager progresoManager;
+
     public Image preguntaImagen;
-    public Text vidasText;
-    public Text erroresContador;
-    public Text rondasContador;
+    public Text erroresText;
+    public Text aciertosText;
     public Text tiempoText;
 
     // Botones para las respuestas
@@ -43,6 +45,8 @@ public class PreguntasManager : MonoBehaviour
 
     private void Start()
     {
+        vidas = 3;
+
         // Asigna los componentes AudioSource
         audioPregunta = gameObject.AddComponent<AudioSource>();
         audioRespuesta = gameObject.AddComponent<AudioSource>();
@@ -74,10 +78,6 @@ public class PreguntasManager : MonoBehaviour
 
     void SetPregunta(int preguntaIndex)
     {
-        // Seteamos los textos de la interfaz (pregunta y rondas)
-        preguntaText.text = preguntasData.preguntas[preguntaIndex].preguntaText;
-        rondasContador.text = "" + rondas;
-
         // Seteamos la imagen de la pregunta
         preguntaImagen.sprite = preguntasData.preguntas[preguntaIndex].imagen;
 
@@ -141,7 +141,9 @@ public class PreguntasManager : MonoBehaviour
         {
             // Disminuimos las vidas
             vidas--;
-            vidasText.text = "" + vidas;
+
+            // Actualizar el gráfico de vidas
+            vidasManager.ActualizarVidas(vidas);
 
             // Mostramos el panel de respuesta incorrecta
             Incorrecto.gameObject.SetActive(true);
@@ -183,6 +185,7 @@ public class PreguntasManager : MonoBehaviour
         if (preguntaActual < preguntasData.preguntas.Length)
         {
             rondas++;
+            progresoManager.ActualizarProgreso(rondas);
             Reset();
         }
         // Si no, se muestra la pantalla de Estadísticas
@@ -190,11 +193,12 @@ public class PreguntasManager : MonoBehaviour
         {
             Estadisticas.SetActive(true);
 
-            erroresContador.text = Mathf.Abs(vidas - 3) + "";
+            erroresText.text = Mathf.Abs(vidas - 3) + "";
+            aciertosText.text = vidas + "/3";
 
             // Mostrar el tiempo tomado
             nivelActivo = false; // Detener el contador de tiempo
-            tiempoText.text = (int)tiempoNivel + "";
+            tiempoText.text = (int)tiempoNivel + " s";
         }
     }
 
