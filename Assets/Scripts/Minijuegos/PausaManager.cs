@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class PausaManager : MonoBehaviour
 {
     public GameObject menuPausaUI;
+    public GameObject panelInstruccionesUI;
     public Button btnPausar;
     public Button btnReanudar;
     public Button btnReiniciar;
+    public Button btnInstrucciones;
     public Button btnSalir;
     public Button btnCerrar;
     public Text nombreMinijuegoText;
@@ -22,6 +24,7 @@ public class PausaManager : MonoBehaviour
         btnPausar.onClick.AddListener(Pausar);
         btnReanudar.onClick.AddListener(Reanudar);
         btnReiniciar.onClick.AddListener(ReiniciarNivel);
+        btnInstrucciones.onClick.AddListener(MostrarInstrucciones);
         btnSalir.onClick.AddListener(Salir);
         btnCerrar.onClick.AddListener(Reanudar);
     }
@@ -60,5 +63,11 @@ public class PausaManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("ChooseGameScreen");
+    }
+
+    void MostrarInstrucciones()
+    {
+        Time.timeScale = 0f;
+        panelInstruccionesUI.gameObject.SetActive(true);
     }
 }

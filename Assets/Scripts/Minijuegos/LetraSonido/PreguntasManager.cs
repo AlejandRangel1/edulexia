@@ -23,6 +23,10 @@ public class PreguntasManager : MonoBehaviour
     // Audio de la pregunta
     public Button botonPlayPregunta;
     private AudioSource audioPregunta;
+       
+    // Audios cuando se responde correcto/incorrecto
+    public AudioClip sonidoCorrecto;
+    public AudioClip sonidoIncorrecto;
 
     // Audio de la respuesta
     private AudioSource audioRespuesta;
@@ -43,6 +47,9 @@ public class PreguntasManager : MonoBehaviour
     private float tiempoNivel;
     private bool nivelActivo = false;
 
+    private AudioSource AScorrecto;
+    private AudioSource ASincorrecto;
+
     private void Start()
     {
         vidas = 3;
@@ -50,6 +57,12 @@ public class PreguntasManager : MonoBehaviour
         // Asigna los componentes AudioSource
         audioPregunta = gameObject.AddComponent<AudioSource>();
         audioRespuesta = gameObject.AddComponent<AudioSource>();
+
+        // Asignar los audios de Incorrecto y Correcto
+        AScorrecto = gameObject.AddComponent<AudioSource>();
+        ASincorrecto = gameObject.AddComponent<AudioSource>();
+        AScorrecto.clip = sonidoCorrecto;
+        ASincorrecto.clip = sonidoIncorrecto;
 
         SetPregunta(preguntaActual);
 
@@ -72,7 +85,7 @@ public class PreguntasManager : MonoBehaviour
         if (nivelActivo)
         {
             tiempoNivel += Time.deltaTime;
-            Debug.Log(tiempoNivel);
+            //Debug.Log(tiempoNivel);
         }
     }
 
@@ -130,6 +143,9 @@ public class PreguntasManager : MonoBehaviour
             // Mostramos el panel de respuesta correcta
             Correcto.gameObject.SetActive(true);
 
+            AScorrecto.Play();
+
+
             // Desactivamos los botones de respuesta
             DesactivarBotones();
 
@@ -147,6 +163,8 @@ public class PreguntasManager : MonoBehaviour
 
             // Mostramos el panel de respuesta incorrecta
             Incorrecto.gameObject.SetActive(true);
+
+            ASincorrecto.Play(); 
 
             DesactivarBotones();
 

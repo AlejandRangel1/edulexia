@@ -6,9 +6,9 @@ public class PreguntasData : ScriptableObject
     [System.Serializable]
     public struct Pregunta
     {
-        public string[] respuestas;
         public Sprite imagen;
         public AudioClip audio;
+        public string[] respuestas;
         public AudioClip[] respuestasAudios;
         public int indiceRespuestaCorrecta;
     }
