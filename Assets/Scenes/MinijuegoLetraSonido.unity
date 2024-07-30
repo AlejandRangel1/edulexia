@@ -7883,6 +7883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0871c0eab51140aeb0cf091ac994a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dificultad: "f\xE1cil"
   vidasManager: {fileID: 1805851861}
   progresoManager: {fileID: 1805851862}
   preguntaImagen: {fileID: 1395740321}
@@ -7894,7 +7895,9 @@ MonoBehaviour:
   - {fileID: 234549364}
   - {fileID: 1677625286}
   - {fileID: 542852662}
-  preguntasData: {fileID: 11400000, guid: 7c020c4ddcd6a284190aaca6f10574bb, type: 2}
+  preguntasDataFacil: {fileID: 11400000, guid: 7c020c4ddcd6a284190aaca6f10574bb, type: 2}
+  preguntasDataNormal: {fileID: 11400000, guid: 07bdeb08e3688304fb9807b98fa9fcfa, type: 2}
+  preguntasDataDificil: {fileID: 11400000, guid: e469df7f08a636844962922c3d172b30, type: 2}
   botonPlayPregunta: {fileID: 755005103}
   sonidoCorrecto: {fileID: 8300000, guid: db36caea4f3d73d4083141bc2239ede5, type: 3}
   sonidoIncorrecto: {fileID: 8300000, guid: e526116957442b648b0bd8a79686a553, type: 3}

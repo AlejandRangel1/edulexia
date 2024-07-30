@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad9aba6249e76d4da3206d7851b7037, type: 3}
   m_Name: SetPreguntas_Normal
   m_EditorClassIdentifier: 
-  preguntas: []
+  preguntas:
+  - imagen: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5bcf3de2f1220574a9d84a73c0da88c8, type: 3}
+    respuestas:
+    - Burro
+    respuestasAudios:
+    - {fileID: 8300000, guid: 5089672295b890c46888362cac367a0e, type: 3}
+    indiceRespuestaCorrecta: 0
