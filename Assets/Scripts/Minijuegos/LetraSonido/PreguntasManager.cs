@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PreguntasManager : MonoBehaviour
 {
+    public string dificultad;
+
     // Scripts
     public VidasManager vidasManager;
     public ProgresoManager progresoManager;
@@ -17,13 +19,17 @@ public class PreguntasManager : MonoBehaviour
     // Botones para las respuestas
     public Button[] respuestaBotones;
 
-    // Archivo con el set de preguntas-respuestas
-    public PreguntasData preguntasData;
+    // Archivos con los sets de preguntas-respuestas para cada dificultad
+    public PreguntasData preguntasDataFacil;
+    public PreguntasData preguntasDataNormal;
+    public PreguntasData preguntasDataDificil;
+
+    private PreguntasData preguntasData; // Conjunto de preguntas a utilizar basado en la dificultad
 
     // Audio de la pregunta
     public Button botonPlayPregunta;
     private AudioSource audioPregunta;
-       
+
     // Audios cuando se responde correcto/incorrecto
     public AudioClip sonidoCorrecto;
     public AudioClip sonidoIncorrecto;
@@ -50,10 +56,8 @@ public class PreguntasManager : MonoBehaviour
     private AudioSource AScorrecto;
     private AudioSource ASincorrecto;
 
-    private void Start()
+    private void Awake()
     {
-        vidas = 3;
-
         // Asigna los componentes AudioSource
         audioPregunta = gameObject.AddComponent<AudioSource>();
         audioRespuesta = gameObject.AddComponent<AudioSource>();
@@ -63,8 +67,13 @@ public class PreguntasManager : MonoBehaviour
         ASincorrecto = gameObject.AddComponent<AudioSource>();
         AScorrecto.clip = sonidoCorrecto;
         ASincorrecto.clip = sonidoIncorrecto;
+    }
 
-        SetPregunta(preguntaActual);
+    private void Start()
+    {
+        vidas = 3;
+        // Añade el listener para el botón de reproducir sonido
+        botonPlayPregunta.onClick.AddListener(ReproducirSonidoPregunta);
 
         // Ocultar los paneles de error/acierto/estadísticas
         Correcto.gameObject.SetActive(false);
@@ -72,12 +81,12 @@ public class PreguntasManager : MonoBehaviour
         Estadisticas.gameObject.SetActive(false);
         PartidaTerminada.gameObject.SetActive(false);
 
-        // Añade el listener para el botón de reproducir sonido
-        botonPlayPregunta.onClick.AddListener(ReproducirSonidoPregunta);
-
         // Inicia el contador de tiempo
         tiempoNivel = 0f;
         nivelActivo = true;
+
+        // Establece la dificultad para el set de preguntas
+        SetDificultad(dificultad);
     }
 
     private void Update()
@@ -89,8 +98,38 @@ public class PreguntasManager : MonoBehaviour
         }
     }
 
+    public void SetDificultad(string dificultad)
+    {
+        switch (dificultad.ToLower())
+        {
+            case "fácil":
+                preguntasData = preguntasDataFacil;
+                break;
+            case "normal":
+                preguntasData = preguntasDataNormal;
+                break;
+            case "difícil":
+                preguntasData = preguntasDataDificil;
+                break;
+            default:
+                Debug.LogError("Dificultad no válida: " + dificultad);
+                return;
+        }
+
+        // Reiniciar el juego con el nuevo conjunto de preguntas
+        preguntaActual = 0;
+        rondas = 0;
+        SetPregunta(preguntaActual);
+    }
+
     void SetPregunta(int preguntaIndex)
     {
+        if (preguntaIndex >= preguntasData.preguntas.Length)
+        {
+            Debug.LogError("Índice de pregunta fuera de rango: " + preguntaIndex);
+            return;
+        }
+
         // Seteamos la imagen de la pregunta
         preguntaImagen.sprite = preguntasData.preguntas[preguntaIndex].imagen;
 
@@ -145,7 +184,6 @@ public class PreguntasManager : MonoBehaviour
 
             AScorrecto.Play();
 
-
             // Desactivamos los botones de respuesta
             DesactivarBotones();
 
@@ -164,7 +202,7 @@ public class PreguntasManager : MonoBehaviour
             // Mostramos el panel de respuesta incorrecta
             Incorrecto.gameObject.SetActive(true);
 
-            ASincorrecto.Play(); 
+            ASincorrecto.Play();
 
             DesactivarBotones();
 
@@ -172,7 +210,7 @@ public class PreguntasManager : MonoBehaviour
         }
     }
 
-    void CheckVidas ()
+    void CheckVidas()
     {
         if (vidas <= 0)
         {

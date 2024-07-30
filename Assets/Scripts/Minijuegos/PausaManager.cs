@@ -6,6 +6,11 @@ public class PausaManager : MonoBehaviour
 {
     public GameObject menuPausaUI;
     public GameObject panelInstruccionesUI;
+
+    // Estancia de InstruccionesManager
+    public InstruccionesManager2 instruccionesManager;
+
+    // Botones de pausa
     public Button btnPausar;
     public Button btnReanudar;
     public Button btnReiniciar;
@@ -18,6 +23,7 @@ public class PausaManager : MonoBehaviour
     void Start()
     {
         menuPausaUI.SetActive(false);
+        panelInstruccionesUI.SetActive(false);
 
         nombreMinijuegoText.text = nombreMinijuego;
 
@@ -68,6 +74,6 @@ public class PausaManager : MonoBehaviour
     void MostrarInstrucciones()
     {
         Time.timeScale = 0f;
-        panelInstruccionesUI.gameObject.SetActive(true);
+        instruccionesManager.MostrarInstrucciones();
     }
 }
