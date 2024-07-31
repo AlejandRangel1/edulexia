@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChooseGameScreen.unity
     guid: 4eb5c88d2118b7f41900a16c71bfaa55
+  - enabled: 1
+    path: Assets/Scenes/MinijuegoLetraSonido.unity
+    guid: 11b492ff104e0b34d987a0a3a0cc1eb6
   m_configObjects: {}

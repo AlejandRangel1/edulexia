@@ -1913,6 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d84634785fd7f4c8aae57f3f687c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnJuegoLetraSonido: {fileID: 2044707660}
   popUp: {fileID: 880332616}
 --- !u!4 &1044474532
 Transform:
@@ -3110,6 +3111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d84634785fd7f4c8aae57f3f687c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnJuegoLetraSonido: {fileID: 0}
   popUp: {fileID: 578339061}
 --- !u!114 &2004545432
 MonoBehaviour:
@@ -3123,6 +3125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d84634785fd7f4c8aae57f3f687c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnJuegoLetraSonido: {fileID: 0}
   popUp: {fileID: 1097657869}
 --- !u!1 &2044707658
 GameObject:
@@ -3205,7 +3208,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2044707661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: f6d84634785fd7f4c8aae57f3f687c9c, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MinijuegoLetraSonido
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2044707661
 MonoBehaviour:
   m_ObjectHideFlags: 0
